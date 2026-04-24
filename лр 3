@@ -1,0 +1,20 @@
+# Курс: ЦИБ - 251
+# ФИО: Соболева Диана Юрьевна
+# Задание: Дан список из чисел. Определите их НОК (наименьшее общее кратное) и НОД (наибольший общий делитель)
+import math
+def find_gcd(numbers):
+    result = numbers[0]
+    for num in numbers[1:]:
+        result = math.gcd(result, num)
+    return result
+def find_lcm(numbers):
+    result = numbers[0]
+    for num in numbers[1:]:
+        result = result * num // math.gcd(result, num)
+    return result
+if __name__ == "__main__":
+    import sys
+    data = list(map(int, sys.stdin.read().strip().split()))
+    if data:
+        print(f"НОД: {find_gcd(data)}")
+        print(f"НОК: {find_lcm(data)}")
